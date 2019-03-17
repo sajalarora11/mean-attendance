@@ -1,0 +1,20 @@
+{
+  "name": "mean-based-attendance",
+  "version": "0.0.1",
+  "description": "A MEAN stack based attendance application for corporate",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sajal Arora",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.19",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0"
+  }
+}
