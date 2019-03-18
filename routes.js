@@ -1,3 +1,3 @@
 module.exports = (app) => {
-    app.use('/register', require('./apis/users'));
+    app.use('/user', require('./apis/users'));
 }   
