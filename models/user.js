@@ -2,7 +2,7 @@ const db = require('../config/db');
 
 module.exports = () => {
     const userSchema = `CREATE TABLE IF NOT EXISTS User (
-        id INT AUTO_INCREMENT,
+        id INT NOT NULL,
         first_name TEXT  NOT NULL,
         last_name TEXT NOT NULL,
         email VARCHAR(50) NOT NULL UNIQUE,
