@@ -1,6 +1,6 @@
 const db = require('../config/db');
 
-module.exports = () => {
+module.exports = async (res) => {
     const userSchema = `CREATE TABLE IF NOT EXISTS User (
         id INT NOT NULL,
         first_name TEXT  NOT NULL,
@@ -56,21 +56,45 @@ module.exports = () => {
         FOREIGN KEY(userId) REFERENCES User(id)
     );`
 
-    db.query(userSchema, (err, rows) => {
-        if (err) throw err;
-        console.log("Created user table");
-        db.query(phoneSchema, (err, rows) =>  {
-            if (err) throw err;
-            console.log("Created Phonebook table");
-            db.query(addressSchema, (err, rows) => {
-                if (err) throw err;
-                console.log('Addressbook table created');
-                db.query(idProofSchema, (err, rows) => {
-                    if (err) throw err;
-                    console.log('ID proof table created');
-                })
-            })
+    try {
+        const user = await db.query(userSchema, []);
+        if (!user) {
+            return res.status(500).json({
+                error: true,
+                message: "Somethign went wrong"
+            });
+        } else {
+            const phonebook = await db.query(phoneSchema, []);
+            if (!phonebook) {
+                return res.status(500).json({
+                    error: true,
+                    message: "Somethign went wrong"
+                });
+            } else {
+                const address = await db.query(addressSchema, []);
+                if (!address) {
+                    return res.status(500).json({
+                        error: true,
+                        message: "Somethign went wrong"
+                    });
+                } else {
+                    const idproof = await db.query(idProofSchema, []);
+                    if (!idproof) {
+                        return res.status(500).json({
+                            error: true,
+                            message: "Somethign went wrong"
+                        });
+                    } else {
+                        console.log("User table created");
+                    }
+                }
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        return res.send({
+            error: true,
+            message: "Something went wrong"
         })
-    });
+    }
 }
-
