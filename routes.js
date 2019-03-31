@@ -1,6 +1,10 @@
 module.exports = (app) => {
     app.use('/api', require('./apis/users'));
-
+    app.use('/*', (req, res, next) => {
+      return res.status(200).json({
+        message: "You are connected to the server..."
+      })
+    })
     // Error handler for all the bad requests...
     app.use((req, res, next) => {
         const error = new Error('Not Found');
