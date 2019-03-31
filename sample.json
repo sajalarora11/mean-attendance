@@ -1,0 +1,20 @@
+{
+	"first_name": "George",
+	"last_name": "Cliffton",
+	"email": "george@gmail.com",
+	"password": "test12345",
+	"phone1": "123123123",
+	"phone2": "212122122",
+	"curr_address": "God Knows",
+	"per_address": "2nd Street Heaven",
+	"city": "Georgia",
+	"country": "United States",
+	"zip_code": "3213",
+	"date_of_birth": "1991-09-02",
+	"gender": "MALE",
+	"martial_status": "Married",
+	"aadhar_no": 3512130,
+	"pan_no": 123123,
+	"nationality": "American",
+	"state": "Atlanta"
+}
