@@ -1,15 +1,21 @@
 'use strict';
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-
+const dotenv = require('dotenv');
+dotenv.config();
 const db = require('./db');
 
 module.exports = (app) => {
 
     // setting up database connectionn
-    db.connect(err => {
-        if (err) throw err;
-        console.log("connected to db");
+    db.connect().then(data => {
+        console.log("Connected to server...");
+    }).catch(err => {
+        console.log(err);
+        return res.status(500).json({
+            error: true,
+            message: "Unable to connect!"
+        })
     })
 
 
